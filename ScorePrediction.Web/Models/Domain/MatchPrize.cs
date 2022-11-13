@@ -7,8 +7,8 @@ namespace FenClub.Models.Domain
         [Key]
         public Guid Id { get; set; }
         public string CreatedBy { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public string? DeletedBy { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public string DeletedBy { get; set; }
         public DateTime? DeletedOn { get; set; }
 
 

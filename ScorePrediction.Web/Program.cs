@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using ScorePrediction.Web.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+// DbContext | By MS
+builder.Services.AddDbContext<ScorePredictionDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("PredictionConnectionString")));
+
 
 var app = builder.Build();
 

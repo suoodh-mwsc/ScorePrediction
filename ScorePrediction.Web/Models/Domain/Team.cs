@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ScorePrediction.Domain;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FenClub.Models.Domain
 {
@@ -7,8 +9,8 @@ namespace FenClub.Models.Domain
         [Key]
         public Guid Id { get; set; }
         public string CreatedBy { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public string? DeletedBy { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public string DeletedBy { get; set; }
         public DateTime? DeletedOn { get; set; }
 
 
@@ -16,7 +18,8 @@ namespace FenClub.Models.Domain
         public string Logo { get; set; }
 
 
-        public Guid TournamentId { get; set; }
+        [ForeignKey("Tournament")]
+        Guid TournamentId { get; set; }
         public Tournament Tournament { get; set; }
     }
 }
