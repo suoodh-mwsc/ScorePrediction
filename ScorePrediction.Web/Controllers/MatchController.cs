@@ -3,6 +3,7 @@ using ScorePrediction.Web.Models.Domain;
 using ScorePrediction.Web.Models;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.Mime.MediaTypeNames;
+using ScorePrediction.Web.Models.Dto.Match;
 
 namespace ScorePrediction.Web.Controllers
 {
@@ -15,12 +16,24 @@ namespace ScorePrediction.Web.Controllers
         }
         public IActionResult List()
         {
+
             DateTime todayDate = DateTime.Now;
-            IEnumerable<Match> objectList = _dbContext.Matches
+            IEnumerable<Match> todayList = _dbContext.Matches
+                .Include(m => m.AwayTeam)
+                .Include(m => m.HomeTeam)
+                .Where(e => e.DeletedOn == null);
+
+            IEnumerable<Match> pastList = _dbContext.Matches
                 .Include(m => m.AwayTeam)
                 .Include(m => m.HomeTeam)
                 .Where(e => e.DeletedOn == null && e.PublishedOn >= DateTime.Now);
-            return View(objectList);
+
+            IEnumerable<Match> futureList = _dbContext.Matches
+                .Include(m => m.AwayTeam)
+                .Include(m => m.HomeTeam)
+                .Where(e => e.DeletedOn == null && e.PublishedOn >= DateTime.Now);
+
+            return View(todayList);
         }
 
         public IActionResult ManageList()

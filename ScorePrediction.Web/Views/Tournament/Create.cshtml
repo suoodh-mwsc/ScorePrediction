@@ -1,7 +1,89 @@
-﻿
+﻿@model ScorePrediction.Web.Models.Dto.Tournament.CreateTournamentDto
+
 @{
     ViewData["Title"] = "Create";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<section class="py-5">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 sm-margin-30px-bottom">
+            <div class="blog-style5">
+
+                <div class="section-heading left mb-4">
+                    <div class="row">
+                        <div class="col-lg col-md">
+                            <h4 class="text-capitalize">Create Tournament</h4>
+                        </div>
+                        <div class="col-lg-auto col-md-auto">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-grids">
+                    <form asp-action="Create">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-8">
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="StartOn" class="control-label"></label>
+                                    <input asp-for="StartOn" class="form-control" />
+                                    <span asp-validation-for="StartOn" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="EndOn" class="control-label"></label>
+                                    <input asp-for="EndOn" class="form-control" />
+                                    <span asp-validation-for="EndOn" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 pt-5">
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="ScorePrediction" /> @Html.DisplayNameFor(model => model.ScorePrediction)
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-auto col-md-auto">
+                                <div class="form-group">
+                                    <a class="btn btn-success" asp-action="ManageList">
+                                        <span><i class="fas fa-arrow-circle-left margin-5px-right"></i> Back to List</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-auto col-md-auto">
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }                            
+
 

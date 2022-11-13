@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ScorePrediction.Web.Models.Domain;
 using ScorePrediction.Web.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ScorePrediction.Web.Controllers
 {
@@ -14,7 +15,9 @@ namespace ScorePrediction.Web.Controllers
         public IActionResult List()
         {
             DateTime todayDate = DateTime.Now;
-            IEnumerable<Team> objectList = _dbContext.Teams.Where(e => e.DeletedOn == null);
+            IEnumerable<Team> objectList = _dbContext.Teams
+                .Include(m => m.Tournament)
+                .Where(e => e.DeletedOn == null);
             return View(objectList);
         }
 
