@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TRBhG6LchulmdkJ2AstBXY8KDPQweNcHlJwWZGg4WbeEid8YxgPFUqdEL+1Eri9qWYnOfHuXwjn9Hliw8ycyWA==",
+  "dgSpecHash": "r9i3coChc8XWRwDZ+dmfUEvz+8023uwNFiKRHHqQBno8RVWm1IwNiR7Njr/IECBjFewkq0z5ejYLyQS6/b5nVQ==",
   "success": true,
   "projectFilePath": "D:\\Code MWSC\\2022-Test (.net core)\\ScorePrediction\\ScorePrediction.Web\\ScorePrediction.Web.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\DU10031222\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.11\\microsoft.entityframeworkcore.design.6.0.11.nupkg.sha512",
     "C:\\Users\\DU10031222\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.11\\microsoft.entityframeworkcore.relational.6.0.11.nupkg.sha512",
     "C:\\Users\\DU10031222\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.11\\microsoft.entityframeworkcore.sqlserver.6.0.11.nupkg.sha512",
+    "C:\\Users\\DU10031222\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.11\\microsoft.entityframeworkcore.tools.6.0.11.nupkg.sha512",
     "C:\\Users\\DU10031222\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\DU10031222\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
     "C:\\Users\\DU10031222\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
