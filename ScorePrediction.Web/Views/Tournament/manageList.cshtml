@@ -3,7 +3,7 @@
 @model IEnumerable<Tournament>;
 
 @{
-    ViewData["Title"] = "manageList";
+    ViewData["Title"] = "ManageList";
 }
 
 
@@ -18,7 +18,7 @@
                             <h4 class="text-capitalize">Manage Tournament</h4>
                         </div>
                         <div class="col-lg-auto col-md-auto">
-                            <a class="butn theme margin-15px-right xs-margin-10px-bottom px-3 py-1" asp-action="Create">
+                            <a class="butn theme margin-15px-right xs-margin-10px-bottom px-3 py-1" asp-controller="Tournament" asp-action="Create">
                                 <span><i class="fas fa-plus-circle margin-5px-right"></i> Add New</span>
                             </a>
                         </div>

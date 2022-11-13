@@ -2,7 +2,7 @@
 @model IEnumerable<Match>;
 
 @{
-    ViewData["Title"] = "manageList";
+    ViewData["Title"] = "ManageList";
 }
 
 <section class="py-5">
@@ -16,7 +16,7 @@
                             <h4 class="text-capitalize">Manage Match</h4>
                         </div>
                         <div class="col-lg-auto col-md-auto">
-                            <button class="butn theme margin-15px-right xs-margin-10px-bottom px-3 py-1">
+                            <button class="butn theme margin-15px-right xs-margin-10px-bottom px-3 py-1" asp-controller="Match" asp-action="Create">
                                 <span><i class="fas fa-plus-circle margin-5px-right"></i> Add New</span>
                             </button>
                         </div>
@@ -25,12 +25,15 @@
 
                 <div class="blog-grids">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12">
+                        <div class="col-lg-9 col-md-9">
                             <table class="table table-sm table-hover">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Start On</th>
+                                        <th scope="col">Home</th>
+                                        <th scope="col">Away</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Prediction Deadline</th>
+                                        <th scope="col">Published</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -39,10 +42,19 @@
                                     {
                                         <tr>
                                             <td>
-                                                <span class="h6 text-dark">@item.HomeTeam</span>
+                                                <span class="h6 text-dark">@item.HomeTeam.Name</span>
                                             </td>
                                             <td>
-                                                <span class="h6 text-dark">@item.AwayTeam</span>
+                                                <span class="h6 text-dark">@item.AwayTeam.Name</span>
+                                            </td>
+                                            <td>
+                                                <span class="h6 text-dark">@item.MatchTitle</span>
+                                            </td>
+                                            <td>
+                                                <span class="h6 text-dark">@item.PredictionDeadline</span>
+                                            </td>
+                                            <td>
+                                                <span class="h6 text-dark">@item.PublishedOn</span>
                                             </td>
                                             <td>
                                                 <a asp-action="Edit" asp-route-id="@item.Id">

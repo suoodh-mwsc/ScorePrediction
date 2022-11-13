@@ -14,11 +14,11 @@ namespace ScorePrediction.Web.Controllers
         public IActionResult List()
         {
             DateTime todayDate = DateTime.Now; 
-            IEnumerable<Tournament> objectList = _dbContext.Tournaments.Where(e => e.DeletedOn == null && e.PublishedOn >= DateTime.Now);
+            IEnumerable<Tournament> objectList = _dbContext.Tournaments.Where(e => e.DeletedOn == null && e.PublishedOn <= DateTime.Now);
             return View(objectList);
         }
 
-        public IActionResult manageList()
+        public IActionResult ManageList()
         {
             IEnumerable<Tournament> objectList = _dbContext.Tournaments.Where(e => e.DeletedOn == null);
             return View(objectList);

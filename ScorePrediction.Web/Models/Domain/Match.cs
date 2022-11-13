@@ -34,13 +34,12 @@ namespace ScorePrediction.Web.Models.Domain
         public Tournament Tournament { get; set; }
 
 
-        [ForeignKey("Team")]
-        Guid HomeTeamId { get; set; }
-        public Team HomeTeam { get; set; }
+        //Guid HomeTeamId { get; set; }
+        //[ForeignKey("HomeTeamId")]
+        public virtual Team HomeTeam { get; set; }
 
-
-        [ForeignKey("Team")]
-        Guid AwayTeamId { get; set; }
-        public Team AwayTeam { get; set; }
+        //[ForeignKey("AwayTeamId")]
+        //Guid AwayTeamId { get; set; }
+        public virtual Team AwayTeam { get; set; }
     }
 }

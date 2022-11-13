@@ -18,7 +18,7 @@ namespace ScorePrediction.Web.Controllers
             return View(objectList);
         }
 
-        public IActionResult manageList()
+        public IActionResult ManageList()
         {
             IEnumerable<Team> objectList = _dbContext.Teams.Where(e => e.DeletedOn == null);
             return View(objectList);

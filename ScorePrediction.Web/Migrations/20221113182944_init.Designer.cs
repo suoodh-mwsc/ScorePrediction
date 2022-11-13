@@ -12,8 +12,8 @@ using ScorePrediction.Web.Models;
 namespace ScorePrediction.Web.Migrations
 {
     [DbContext(typeof(ScorePredictionDbContext))]
-    [Migration("20221113161431_update-image-fields")]
-    partial class updateimagefields
+    [Migration("20221113182944_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,13 +24,13 @@ namespace ScorePrediction.Web.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("FenClub.Models.Domain.Match", b =>
+            modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Match", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AwayTeamId1")
+                    b.Property<Guid?>("AwayTeamId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
@@ -45,7 +45,7 @@ namespace ScorePrediction.Web.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("HomeTeamId1")
+                    b.Property<Guid?>("HomeTeamId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("MatchTitle")
@@ -66,16 +66,16 @@ namespace ScorePrediction.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AwayTeamId1");
+                    b.HasIndex("AwayTeamId");
 
-                    b.HasIndex("HomeTeamId1");
+                    b.HasIndex("HomeTeamId");
 
                     b.HasIndex("TournamentId");
 
                     b.ToTable("Matches");
                 });
 
-            modelBuilder.Entity("FenClub.Models.Domain.Team", b =>
+            modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Team", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,7 +111,7 @@ namespace ScorePrediction.Web.Migrations
                     b.ToTable("Teams");
                 });
 
-            modelBuilder.Entity("ScorePrediction.Domain.Tournament", b =>
+            modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Tournament", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,17 +154,17 @@ namespace ScorePrediction.Web.Migrations
                     b.ToTable("Tournaments");
                 });
 
-            modelBuilder.Entity("FenClub.Models.Domain.Match", b =>
+            modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Match", b =>
                 {
-                    b.HasOne("FenClub.Models.Domain.Team", "AwayTeam")
-                        .WithMany()
-                        .HasForeignKey("AwayTeamId1");
+                    b.HasOne("ScorePrediction.Web.Models.Domain.Team", "AwayTeam")
+                        .WithMany("AwayMatches")
+                        .HasForeignKey("AwayTeamId");
 
-                    b.HasOne("FenClub.Models.Domain.Team", "HomeTeam")
-                        .WithMany()
-                        .HasForeignKey("HomeTeamId1");
+                    b.HasOne("ScorePrediction.Web.Models.Domain.Team", "HomeTeam")
+                        .WithMany("HomeMatches")
+                        .HasForeignKey("HomeTeamId");
 
-                    b.HasOne("ScorePrediction.Domain.Tournament", "Tournament")
+                    b.HasOne("ScorePrediction.Web.Models.Domain.Tournament", "Tournament")
                         .WithMany("TournamentMatches")
                         .HasForeignKey("TournamentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -177,9 +177,9 @@ namespace ScorePrediction.Web.Migrations
                     b.Navigation("Tournament");
                 });
 
-            modelBuilder.Entity("FenClub.Models.Domain.Team", b =>
+            modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Team", b =>
                 {
-                    b.HasOne("ScorePrediction.Domain.Tournament", "Tournament")
+                    b.HasOne("ScorePrediction.Web.Models.Domain.Tournament", "Tournament")
                         .WithMany()
                         .HasForeignKey("TournamentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -188,7 +188,14 @@ namespace ScorePrediction.Web.Migrations
                     b.Navigation("Tournament");
                 });
 
-            modelBuilder.Entity("ScorePrediction.Domain.Tournament", b =>
+            modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Team", b =>
+                {
+                    b.Navigation("AwayMatches");
+
+                    b.Navigation("HomeMatches");
+                });
+
+            modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Tournament", b =>
                 {
                     b.Navigation("TournamentMatches");
                 });

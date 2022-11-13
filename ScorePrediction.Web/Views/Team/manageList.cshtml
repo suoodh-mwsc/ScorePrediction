@@ -3,7 +3,7 @@
 @model IEnumerable<Team>;
 
 @{
-    ViewData["Title"] = "manageList";
+    ViewData["Title"] = "ManageList";
 }
 
 
@@ -18,7 +18,7 @@
                             <h4 class="text-capitalize">Manage Team</h4>
                         </div>
                         <div class="col-lg-auto col-md-auto">
-                            <button class="butn theme margin-15px-right xs-margin-10px-bottom px-3 py-1">
+                            <button class="butn theme margin-15px-right xs-margin-10px-bottom px-3 py-1" asp-controller="Team" asp-action="Create">
                                 <span><i class="fas fa-plus-circle margin-5px-right"></i> Add New</span>
                             </button>
                         </div>
@@ -27,7 +27,7 @@
 
                 <div class="blog-grids">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12">
+                        <div class="col-lg-9 col-md-9">
                             <table class="table table-sm table-hover">
                                 <thead class="thead-light">
                                     <tr>

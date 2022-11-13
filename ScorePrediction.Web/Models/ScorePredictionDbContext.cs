@@ -19,6 +19,8 @@ namespace ScorePrediction.Web.Models
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ScorePredictionDbContext).Assembly);
         }
 
+
+
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Match> Matches { get; set; }
