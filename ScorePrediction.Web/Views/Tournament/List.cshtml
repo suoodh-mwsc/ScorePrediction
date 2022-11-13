@@ -1,14 +1,38 @@
-﻿@using ScorePrediction.Domain
+﻿@using ScorePrediction.Web.Models.Domain
 @model IEnumerable<Tournament>;
+
 @{
     ViewData["Title"] = "List";
 }
 
-<h1>List</h1>
+<section>
+    <div class="container-fluid">
 
+        <div class="section-heading left">
+            <h3>Tournaments</h3>
+        </div>
 
-@foreach (var obj in Model)
-{
-    @obj.Name
-};
-
+        <div class="row position-relative">
+            @foreach (var item in Model)
+            {
+                <!-- start blog -->
+                <div class="col-lg-6 sm-margin-20px-bottom blog-style1">
+                    <a asp-controller="Matches" asp-action="PublishedMatch" asp-route-id="@item.Id">
+                        <div class="item text-center">
+                            <div class="post-img">
+                                <img src="~/crizal/img/blog/blog-7.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <h5 class="margin-10px-bottom font-weight-600"><a href="blog-post.html">@item.Name</a></h5>
+                                <div class="tag alt-font">
+                                    <a href="blog.html">Designing | <span class="font-size12 display-inline-block text-theme-color">02 Jan 2018</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- end blog -->
+            }
+        </div>
+    </div>
+</section>

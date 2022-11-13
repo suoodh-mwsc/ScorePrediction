@@ -1,8 +1,8 @@
-﻿using FenClub.Models.Domain;
-using Microsoft.EntityFrameworkCore;
-using ScorePrediction.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using ScorePrediction.Web.Models.Domain;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+
 
 namespace ScorePrediction.Web.Models
 {

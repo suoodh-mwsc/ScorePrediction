@@ -1,7 +1,7 @@
-﻿using ScorePrediction.Domain;
+﻿using ScorePrediction.Web.Models.Domain;
 using System.ComponentModel.DataAnnotations;
 
-namespace FenClub.Models.Domain
+namespace ScorePrediction.Web.Models.Domain
 {
     public class TournamentGrandPrize
     {

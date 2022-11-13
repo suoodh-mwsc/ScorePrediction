@@ -3,52 +3,111 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ScorePrediction.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] - FenClub</title>
+    @*    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ScorePrediction.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FenClub.styles.css" asp-append-version="true" />*@
+
+    <link rel="stylesheet" href="~/crizal/css/plugins.css" />
+    <link rel="stylesheet" href="~/crizal/search/search.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/crizal/css/styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Score Prediction</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tournament" asp-action="List">List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+        <div class="navbar-default border-bottom border-color-light-white">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-12">
+                        <div class="menu_area alt-font">
+                            <nav class="navbar navbar-expand-lg navbar-light no-padding">
+                                <div class="navbar-header navbar-header-custom">
+                                    <!-- start logo -->
+                                    <a class="navbar-brand">
+                                        <img id="logo" src="~/crizal/img/logos/logo-inner.png" alt="logo">
+                                    </a>
+                                    <!-- end logo -->
+                                </div>
+                                <div class="navbar-toggler">
+                                </div>
+                                <!-- menu area -->
+                                <ul class="navbar-nav ml-auto" id="nav" style="">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Tournament" asp-action="List">Tournament</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Match" asp-action="List">Match</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="List">Team</a>
+                                    </li>
+
+
+                                    <li class="has-sub">
+                                        <span class="submenu-button"></span>
+                                        <a href="javascript:void(0)">FenClub Admin</a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a class="nav-link text-light" asp-controller="Tournament" asp-action="manageList">Manage Tournament</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link text-light" asp-controller="Match" asp-action="manageList">Manage Team</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link text-light" asp-controller="Team" asp-action="manageList">Manage Match</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                                <!-- end menu area -->
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
-            @RenderBody()
+            <div class="row justify-content-center">
+                <div class="col-10 col-lg-10">
+                    @RenderBody()
+                </div>
+            </div>
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <div class="footer-bar mt-0">
         <div class="container">
-            &copy; 2022 - ScorePrediction.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <p class="xs-font-size13 mb-3 mt-3">© 2022 FenClub is Powered by MWSC</p>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+
+    <script src="~/crizal/js/jquery.min.js"></script>
+    <script src="~/crizal/js/modernizr.js"></script>
+    <script src="~/crizal/js/bootstrap.min.js"></script>
+    <script src="~/crizal/js/nav-menu.js"></script>
+    <script src="search/search.js"></script>
+    <script src="~/crizal/js/easy.responsive.tabs.js"></script>
+    <script src="~/crizal/js/owl.carousel.js"></script>
+    <script src="~/crizal/js/jquery.counterup.min.js"></script>
+    <script src="~/crizal/js/jquery.stellar.min.js"></script>
+    <script src="~/crizal/js/waypoints.min.js"></script>
+    <script src="~/crizal/js/tabs.min.js"></script>
+    <script src="~/crizal/js/countdown.js"></script>
+    <script src="~/crizal/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/crizal/js/isotope.pkgd.min.js"></script>
+    <script src="~/crizal/js/chart.min.js"></script>
+    <script src="~/crizal/js/owl.carousel.thumbs.js"></script>
+    <script src="~/crizal/js/animated-headline.js"></script>
+    <script src="~/crizal/js/clipboard.min.js"></script>
+    <script src="~/crizal/js/prism.js"></script>
+    <script src="~/crizal/js/map.js"></script>
+    <script src="~/crizal/js/main.js"></script>
+    <script src="~/crizal/js/mailform/jquery.form.min.js"></script>
+    <script src="~/crizal/js/mailform/jquery.rd-mailform.min.c.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ScorePrediction.Domain;
+using ScorePrediction.Web.Models.Domain;
 using ScorePrediction.Web.Models;
 
 namespace ScorePrediction.Web.Controllers
@@ -13,8 +13,32 @@ namespace ScorePrediction.Web.Controllers
         }
         public IActionResult List()
         {
-            IEnumerable<Tournament> objectList = _dbContext.Tournaments;
+            DateTime todayDate = DateTime.Now; 
+            IEnumerable<Tournament> objectList = _dbContext.Tournaments.Where(e => e.DeletedOn == null && e.PublishedOn >= DateTime.Now);
             return View(objectList);
         }
+
+        public IActionResult manageList()
+        {
+            IEnumerable<Tournament> objectList = _dbContext.Tournaments.Where(e => e.DeletedOn == null);
+            return View(objectList);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        //public Task<IActionResult> Edit(Guid? id)
+        //{
+        //    return View();
+        //}
+
+        //public Task<IActionResult> Delete(Guid? id)
+        //{
+
+
+        //    return View();
+        //}
     }
 }

@@ -1,0 +1,79 @@
+﻿@using System.Text.RegularExpressions;
+@using ScorePrediction.Web.Models.Domain
+@model IEnumerable<Team>;
+
+@{
+    ViewData["Title"] = "manageList";
+}
+
+
+<section class="py-5">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 sm-margin-30px-bottom">
+            <div class="blog-style5">
+
+                <div class="section-heading left mb-4">
+                    <div class="row">
+                        <div class="col-lg col-md">
+                            <h4 class="text-capitalize">Manage Team</h4>
+                        </div>
+                        <div class="col-lg-auto col-md-auto">
+                            <button class="butn theme margin-15px-right xs-margin-10px-bottom px-3 py-1">
+                                <span><i class="fas fa-plus-circle margin-5px-right"></i> Add New</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-grids">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <table class="table table-sm table-hover">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Start On</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <span class="h6 text-dark">@item.Name</span>
+                                            </td>
+                                            <td>
+                                                <span class="h6 text-dark">@item.Logo</span>
+                                            </td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.Id">
+                                                    <span class="text-warning mr-2">
+                                                        <i class="fas fa-edit margin-5px-right"></i>
+                                                    </span>
+                                                </a>
+                                                <a asp-action="Details" asp-route-id="@item.Id">
+                                                    <span class="text-primary mr-2">
+                                                        <i class="fas fa-eye margin-5px-right"></i>
+                                                    </span>
+                                                </a>
+                                                <a asp-action="Delete" asp-route-id="@item.Id">
+                                                    <span class="text-danger">
+                                                        <i class="fas fa-trash-alt margin-5px-right"></i>
+                                                    </span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
