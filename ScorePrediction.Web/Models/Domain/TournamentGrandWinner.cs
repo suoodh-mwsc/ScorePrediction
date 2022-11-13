@@ -6,7 +6,7 @@ namespace FenClub.Models.Domain
     public class TournamentGrandWinner
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; } = DateTime.Now;
         public string DeletedBy { get; set; }
@@ -15,7 +15,7 @@ namespace FenClub.Models.Domain
 
         public string WinnerEmployeeId { get; set; }
         public string GrandWinnerTitle { get; set; }
-        public DateTime PublishedOn { get; set; }
+        public DateTime? PublishedOn { get; set; }
 
 
         public TournamentGrandPrize TournamentGrandPrizeId { get; set; }

@@ -12,7 +12,7 @@ namespace ScorePrediction.Domain
     public class Tournament
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; } = DateTime.Now;
         public string DeletedBy { get; set; }

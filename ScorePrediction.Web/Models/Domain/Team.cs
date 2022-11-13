@@ -1,4 +1,5 @@
 ﻿using ScorePrediction.Domain;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,6 +15,7 @@ namespace FenClub.Models.Domain
         public DateTime? DeletedOn { get; set; }
 
 
+        [Required, DisplayName("Name"), MaxLength(50)]
         public string Name { get; set; }
         public string Logo { get; set; }
 
