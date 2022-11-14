@@ -28,8 +28,8 @@ namespace ScorePrediction.Web.Models.Domain
         [DisplayName("Published On")]
         public DateTime? PublishedOn { get; set; }
 
-        public int HomeTeamScore { get; set; }
-        public int AwayTeamScore { get; set; }
+        public int? HomeTeamScore { get; set; } = 0;
+        public int? AwayTeamScore { get; set; } = 0;
 
 
 
@@ -49,6 +49,6 @@ namespace ScorePrediction.Web.Models.Domain
 
         //public ICollection<MatchPrize> MatchPrize { get; set; }
 
-        public ICollection<Prediction> Prediction { get; set; }
+        public IList<Prediction> Prediction { get; set; }
     }
 }

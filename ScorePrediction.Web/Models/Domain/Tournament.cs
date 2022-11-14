@@ -41,6 +41,9 @@ namespace ScorePrediction.Web.Models.Domain
         public string Image { get; set; }
 
 
-        public IEnumerable<Match> TournamentMatches { get; set; }
+
+        public IList<Match> TournamentMatches { get; set; }
+
+        public IList<Group> TournamentGroups { get; set; }
     }
 }

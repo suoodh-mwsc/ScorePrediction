@@ -20,14 +20,18 @@ namespace ScorePrediction.Web.Models.Domain
         public string Logo { get; set; }
 
 
+
+        //public virtual Group Group { get; set; }
+
+
         [ForeignKey("Tournament")]
         Guid TournamentId { get; set; }
         public Tournament Tournament { get; set; }
 
         [InverseProperty("HomeTeam")]
-        public virtual ICollection<Match> HomeMatches { get; set; }
+        public virtual IList<Match> HomeMatches { get; set; }
 
         [InverseProperty("AwayTeam")]
-        public virtual ICollection<Match> AwayMatches { get; set; }
+        public virtual IList<Match> AwayMatches { get; set; }
     }
 }

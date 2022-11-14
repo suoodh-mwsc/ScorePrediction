@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ScorePrediction.Web.Migrations
 {
-    public partial class init : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,6 +28,29 @@ namespace ScorePrediction.Web.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tournaments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TournamentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Groups_Tournaments_TournamentId",
+                        column: x => x.TournamentId,
+                        principalTable: "Tournaments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,6 +142,11 @@ namespace ScorePrediction.Web.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Groups_TournamentId",
+                table: "Groups",
+                column: "TournamentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Matches_AwayTeamId",
                 table: "Matches",
                 column: "AwayTeamId");
@@ -146,6 +174,9 @@ namespace ScorePrediction.Web.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Groups");
+
             migrationBuilder.DropTable(
                 name: "Predictions");
 

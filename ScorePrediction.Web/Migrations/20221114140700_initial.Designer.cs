@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ScorePrediction.Web.Models;
 
@@ -11,9 +12,10 @@ using ScorePrediction.Web.Models;
 namespace ScorePrediction.Web.Migrations
 {
     [DbContext(typeof(ScorePredictionDbContext))]
-    partial class ScorePredictionDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221114140700_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +53,7 @@ namespace ScorePrediction.Web.Migrations
 
                     b.HasIndex("TournamentId");
 
-                    b.ToTable("Group");
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Match", b =>
@@ -63,7 +65,7 @@ namespace ScorePrediction.Web.Migrations
                     b.Property<Guid?>("AwayTeamId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("AwayTeamScore")
+                    b.Property<int>("AwayTeamScore")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -81,7 +83,7 @@ namespace ScorePrediction.Web.Migrations
                     b.Property<Guid?>("HomeTeamId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("HomeTeamScore")
+                    b.Property<int>("HomeTeamScore")
                         .HasColumnType("int");
 
                     b.Property<string>("MatchTitle")
