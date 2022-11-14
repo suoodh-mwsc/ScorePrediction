@@ -79,6 +79,40 @@ namespace ScorePrediction.Web.Migrations
                     b.ToTable("Matches");
                 });
 
+            modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Prediction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AwayTeamPredictedScore")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HomeTeamPredictedScore")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("MatchId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MatchId");
+
+                    b.ToTable("Predictions");
+                });
+
             modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Team", b =>
                 {
                     b.Property<Guid>("Id")
@@ -181,6 +215,17 @@ namespace ScorePrediction.Web.Migrations
                     b.Navigation("Tournament");
                 });
 
+            modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Prediction", b =>
+                {
+                    b.HasOne("ScorePrediction.Web.Models.Domain.Match", "Match")
+                        .WithMany("Prediction")
+                        .HasForeignKey("MatchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Match");
+                });
+
             modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Team", b =>
                 {
                     b.HasOne("ScorePrediction.Web.Models.Domain.Tournament", "Tournament")
@@ -190,6 +235,11 @@ namespace ScorePrediction.Web.Migrations
                         .IsRequired();
 
                     b.Navigation("Tournament");
+                });
+
+            modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Match", b =>
+                {
+                    b.Navigation("Prediction");
                 });
 
             modelBuilder.Entity("ScorePrediction.Web.Models.Domain.Team", b =>

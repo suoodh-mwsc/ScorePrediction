@@ -49,7 +49,6 @@ namespace ScorePrediction.Web.Models.Domain
 
         //public ICollection<MatchPrize> MatchPrize { get; set; }
 
-
-        //public ICollection<Prediction> Prediction { get; set; }
+        public ICollection<Prediction> Prediction { get; set; }
     }
 }

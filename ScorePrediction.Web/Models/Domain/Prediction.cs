@@ -14,21 +14,12 @@ namespace ScorePrediction.Web.Models.Domain
 
 
 
-        public int HomeTeamScore { get; set; }
-        public int AwayTeamScore { get; set; }
+        public int HomeTeamPredictedScore { get; set; }
+        public int AwayTeamPredictedScore { get; set; }
 
 
 
-        public string MatchId { get; set; }
+        public Guid MatchId { get; set; }
         public Match Match { get; set; }
-
-
-        public Guid HomeTeamId { get; set; }
-        public Team HomeTeam { get; set; }
-        public Guid AwayTeamId { get; set; }
-        public Team AwayTeam { get; set; }
-
-
-        //public ICollection<Match> Match { get; set; }
     }
 }

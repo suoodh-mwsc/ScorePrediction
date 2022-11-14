@@ -28,7 +28,7 @@ namespace ScorePrediction.Web.Models
 
         //public DbSet<MatchPrize> MatchPrizes { get; set; }
         //public DbSet<MatchWinner> MatchWinners { get; set; }
-        //public DbSet<Prediction> Predictions { get; set; }
+        public DbSet<Prediction> Predictions { get; set; }
         //public DbSet<TournamentGrandPrize> TournamentGrandPrizes { get; set; }
         //public DbSet<TournamentGrandWinner> TournamentGrandWinners { get; set; }
 
