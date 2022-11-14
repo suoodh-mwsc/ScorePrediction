@@ -28,6 +28,10 @@ namespace ScorePrediction.Web.Models.Domain
         [DisplayName("Published On")]
         public DateTime? PublishedOn { get; set; }
 
+        public int HomeTeamScore { get; set; }
+        public int AwayTeamScore { get; set; }
+
+
 
         [ForeignKey("Tournament")]
         Guid TournamentId { get; set; }
@@ -41,5 +45,11 @@ namespace ScorePrediction.Web.Models.Domain
         //[ForeignKey("AwayTeamId")]
         //Guid AwayTeamId { get; set; }
         public virtual Team AwayTeam { get; set; }
+
+
+        //public ICollection<MatchPrize> MatchPrize { get; set; }
+
+
+        //public ICollection<Prediction> Prediction { get; set; }
     }
 }

@@ -21,6 +21,14 @@ namespace ScorePrediction.Web.Controllers
             return View(objectList);
         }
 
+
+        public IActionResult HistoryList()
+        {
+            DateTime todayDate = DateTime.Now;
+            IEnumerable<Tournament> objectList = _dbContext.Tournaments.Where(e => e.DeletedOn == null && e.PublishedOn <= DateTime.Now);
+            return View(objectList);
+        }
+
         public IActionResult ManageList()
         {
             IEnumerable<Tournament> objectList = _dbContext.Tournaments.Where(e => e.DeletedOn == null);

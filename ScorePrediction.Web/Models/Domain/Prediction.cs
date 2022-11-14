@@ -14,8 +14,8 @@ namespace ScorePrediction.Web.Models.Domain
 
 
 
-        public Team HomeTeamScore { get; set; }
-        public Team AwayTeamScore { get; set; }
+        public int HomeTeamScore { get; set; }
+        public int AwayTeamScore { get; set; }
 
 
 
@@ -27,5 +27,8 @@ namespace ScorePrediction.Web.Models.Domain
         public Team HomeTeam { get; set; }
         public Guid AwayTeamId { get; set; }
         public Team AwayTeam { get; set; }
+
+
+        //public ICollection<Match> Match { get; set; }
     }
 }

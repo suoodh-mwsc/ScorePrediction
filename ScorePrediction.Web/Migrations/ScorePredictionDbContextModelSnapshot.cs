@@ -31,6 +31,9 @@ namespace ScorePrediction.Web.Migrations
                     b.Property<Guid?>("AwayTeamId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("AwayTeamScore")
+                        .HasColumnType("int");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -45,6 +48,9 @@ namespace ScorePrediction.Web.Migrations
 
                     b.Property<Guid?>("HomeTeamId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("HomeTeamScore")
+                        .HasColumnType("int");
 
                     b.Property<string>("MatchTitle")
                         .IsRequired()

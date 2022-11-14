@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\Dto\MatchDto\" />
     <Folder Include="Models\Dto\Team\" />
     <Folder Include="wwwroot\crizal\img\world-cup\" />
   </ItemGroup>

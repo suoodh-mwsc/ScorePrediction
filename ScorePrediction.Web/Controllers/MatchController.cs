@@ -3,7 +3,7 @@ using ScorePrediction.Web.Models.Domain;
 using ScorePrediction.Web.Models;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.Mime.MediaTypeNames;
-using ScorePrediction.Web.Models.Dto.Match;
+using ScorePrediction.Web.Models.Dto;
 
 namespace ScorePrediction.Web.Controllers
 {
@@ -14,26 +14,71 @@ namespace ScorePrediction.Web.Controllers
         {
             _dbContext = dbContext;
         }
-        public IActionResult List()
+
+
+
+        //public async Task<IActionResult> GotoList(Guid? id)
+        //{
+        //    if (id == null || _dbContext.Matches == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var matches = _dbContext.Matches.Find(id);
+        //    if (matches == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    //return RedirectToAction("List", new { @id = id });
+        //    return RedirectToAction("List", "Match", new { id = id });
+        //}
+
+
+        // public IActionResult List(Guid? id)
+        public IActionResult List(Guid? id)
         {
+            DateTime todayDate = DateTime.Now.Date;
+            var objList = new MatchFilterByDate();
+            var DbF = Microsoft.EntityFrameworkCore.EF.Functions;
 
-            DateTime todayDate = DateTime.Now;
-            IEnumerable<Match> todayList = _dbContext.Matches
+            objList.TodaysMatches = _dbContext.Matches
                 .Include(m => m.AwayTeam)
                 .Include(m => m.HomeTeam)
-                .Where(e => e.DeletedOn == null);
+                .Include(m => m.Tournament)
+                .Where(e => e.Tournament.Id == id && e.DeletedOn == null 
+                        && e.PublishedOn.HasValue && DbF.DateDiffDay(todayDate, e.StartOn) ==0)
+                .OrderBy(x => x.StartOn).ToList();
 
-            IEnumerable<Match> pastList = _dbContext.Matches
+
+            objList.FutureMatches = _dbContext.Matches
                 .Include(m => m.AwayTeam)
                 .Include(m => m.HomeTeam)
-                .Where(e => e.DeletedOn == null && e.PublishedOn >= DateTime.Now);
+                .Include(m => m.Tournament)
+                .Where(e => e.Tournament.Id == id 
+                        && e.DeletedOn == null 
+                        && e.PublishedOn.HasValue 
+                        && DbF.DateDiffDay(todayDate, e.StartOn) >= 1)
+                .OrderBy(x => x.StartOn).ToList();
 
-            IEnumerable<Match> futureList = _dbContext.Matches
+            return View(objList);
+        }
+
+
+        public IActionResult HistoryList(Guid? id)
+        {
+            DateTime todayDate = DateTime.Now.Date;
+            var DbF = Microsoft.EntityFrameworkCore.EF.Functions;
+
+            IEnumerable<Match> objectList = _dbContext.Matches
                 .Include(m => m.AwayTeam)
                 .Include(m => m.HomeTeam)
-                .Where(e => e.DeletedOn == null && e.PublishedOn >= DateTime.Now);
-
-            return View(todayList);
+                .Where(e => e.Tournament.Id == id 
+                        && e.DeletedOn == null 
+                        && e.PublishedOn.HasValue 
+                        && DbF.DateDiffDay(todayDate, e.StartOn) >= 1)
+                .OrderBy(x => x.StartOn);
+            return View(objectList);
         }
 
         public IActionResult ManageList()

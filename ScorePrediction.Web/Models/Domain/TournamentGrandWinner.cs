@@ -1,5 +1,6 @@
 ﻿using ScorePrediction.Web.Models.Domain;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ScorePrediction.Web.Models.Domain
 {
@@ -18,7 +19,13 @@ namespace ScorePrediction.Web.Models.Domain
         public DateTime? PublishedOn { get; set; }
 
 
-        public TournamentGrandPrize TournamentGrandPrizeId { get; set; }
+   
         public Tournament TournamentId { get; set; }
+
+
+
+        [ForeignKey("TournamentGrandPrize")]
+        public Guid TournamentGrandPrizeId { get; set; }
+        public TournamentGrandPrize TournamentGrandPrize { get; set; }
     }
 }

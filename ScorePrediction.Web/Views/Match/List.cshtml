@@ -1,5 +1,5 @@
-﻿@using ScorePrediction.Web.Models.Domain
-@model IEnumerable<Match>;
+﻿@using ScorePrediction.Web.Models.Dto
+@model MatchFilterByDate;
 
 @{
     ViewData["Title"] = "List";
@@ -14,150 +14,79 @@
                     <h4 class="text-capitalize">Todays Matches</h4>
                 </div>
 
-                <div class="blog-grids">
-                    <ul>
-                        @foreach (var item in Model)
-                        {
-                            <li>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-3">
-                                        <div class="row">
-                                            <div class="col-lg-auto col-md-auto">
-                                                <div class="blog-img">
-                                                    <img src="~/crizal/img/world-cup/maldives.png" alt="" style="height: 60px; width: 60px !important;">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg col-md my-auto">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12">
-                                                        <h3 class="font-size16 sm-font-size15 xs-font-size14 mb-2">@item.HomeTeam.Name</h3>
-                                                    </div>
-                                                    <div class="col-lg-12 col-md-12">
-                                                        <span class="post-date">March 2, 2017</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 my-auto">
-                                        <div class="row">
-                                            <div class="col-md-2 mfInput">
-                                                <input type="text" name="team1score">
-                                            </div>
-                                            <div class="col-md-2 mfInput">
-                                                <input type="text" name="team2score">
-                                            </div>
-                                            <div class="col-md-2 mfControls">
-                                                <button type="submit" class="butn mfProgress">
-                                                    <span class="cnt">Update Score</span>
-                                                    <span class="loader"></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3">
-                                        <div class="row">
-                                            <div class="col-lg col-md my-auto text-right">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12">
-                                                        <h3 class="font-size16 sm-font-size15 xs-font-size14 mb-2">@item.AwayTeam.Name</h3>
-                                                    </div>
-                                                    <div class="col-lg-12 col-md-12">
-                                                        <span class="post-date">March 2, 2017</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-auto col-md-auto">
-                                                <div class="blog-img">
-                                                    <img src="~/crizal/img/world-cup/maldives.png" alt="" style="height: 60px; width: 60px !important;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                            </li>
-                        }
-
-                    </ul>
-
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="pb-0">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 sm-margin-30px-bottom">
-            <div class="blog-style5">
-
-                <div class="section-heading left">
-                    <h4 class="text-capitalize">Past Matches</h4>
-                </div>
-
-                <div class="blog-grids">
-                    <ul>
-                        @foreach (var item in Model)
-                        {
-                                                    <li>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3">
+                @if (Model.TodaysMatches == null)
+                {
+                    <div class="alert alert-info alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>Info!</strong> Currently you dont have any active Match in this Tournament.
+                    </div>
+                }
+                else
+                {
+                    <div class="blog-grids">
+                        <ul>
+                            @foreach (var item in Model.TodaysMatches)
+                            {
+                                <li>
                                     <div class="row">
-                                        <div class="col-lg-auto col-md-auto">
-                                            <div class="blog-img">
-                                                <img src="~/crizal/img/world-cup/maldives.png" alt="" style="height: 60px; width: 60px !important;">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg col-md my-auto">
+                                        <div class="col-lg-3 col-md-3">
                                             <div class="row">
-                                                <div class="col-lg-12 col-md-12">
-                                                    <h3 class="font-size16 sm-font-size15 xs-font-size14 mb-2">Team 1</h3>
+                                                <div class="col-lg-auto col-md-auto">
+                                                    <img src="/@Url.Content(@item.HomeTeam.Logo)" alt="" style="height: 60px; width: 60px !important;">
                                                 </div>
-                                                <div class="col-lg-12 col-md-12">
-                                                    <span class="post-date">March 2, 2017</span>
+                                                <div class="col-lg col-md my-auto">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <span class="h5 text-capitalize text-dark mb-0">@item.HomeTeam.Name</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 my-auto">
-                                    <div class="row justify-content-center">
-                                        <div class="col-md-12 text-center">
-                                            <h3 class="text-capitalize text-success mb-0">4 - 1</h3>
+                                        <div class="col-lg-6 col-md-6 my-auto">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-3 col-md-3 my-auto">
+                                                    <span class="text-success"><i class="fas fa-calendar-alt"></i></span>
+                                                    <span class="post-date">@Convert.ToDateTime(item.StartOn).ToString("dd/MM/yyyy HH:mm")</span>
+                                                </div>
+                                                <div class="col-md-2 my-auto">
+                                                    <input class="form-control mb-0" type="text" name="team1score">
+                                                </div>
+                                                <div class="col-md-2 my-auto">
+                                                    <input class="form-control mb-0" type="text" name="team2score">
+                                                </div>
+                                                <div class="col-md-3 my-auto">
+                                                    <button type="submit" class="btn btn-primary">Update Score</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-12 text-center">
-                                            <span class="h6 text-success mb-0">Your Prediction: </span>
-                                            <span class="h4 text-capitalize text-success mb-0">4 - 1</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3">
-                                    <div class="row">
-                                        <div class="col-lg col-md my-auto text-right">
+                                        <div class="col-lg-3 col-md-3">
                                             <div class="row">
-                                                <div class="col-lg-12 col-md-12">
-                                                    <h3 class="font-size16 sm-font-size15 xs-font-size14 mb-2">Team 2</h3>
+                                                <div class="col-lg col-md my-auto text-right">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <span class="h5 text-capitalize text-dark mb-0">@item.AwayTeam.Name</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12">
-                                                    <span class="post-date">March 2, 2017</span>
+                                                <div class="col-lg-auto col-md-auto">
+                                                    <img src="/@Url.Content(@item.AwayTeam.Logo)" alt="" style="height: 60px; width: 60px !important;">
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-auto col-md-auto">
-                                            <div class="blog-img">
-                                                <img src="~/crizal/img/world-cup/maldives.png" alt="" style="height: 60px; width: 60px !important;">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-                        }
-                    </ul>
-                </div>
+
+                                </li>
+                            }
+
+                        </ul>
+
+
+                    </div>
+                }
+
+
             </div>
         </div>
     </div>
@@ -173,73 +102,77 @@
                     <h4 class="text-capitalize">Up Coming Matches</h4>
                 </div>
 
-                <div class="blog-grids">
-                    <ul>
-                        @foreach (var item in Model)
-                        {
-                            <li>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-3">
-                                        <div class="row">
-                                            <div class="col-lg-auto col-md-auto">
-                                                <div class="blog-img">
-                                                    <img src="~/crizal/img/world-cup/maldives.png" alt="" style="height: 60px; width: 60px !important;">
+                @if (Model.FutureMatches == null)
+                {
+                    <div class="alert alert-info alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>Info!</strong> Currently you dont have any active Match in this Tournament.
+                    </div>
+                }
+                else
+                {
+                    <div class="blog-grids">
+                        <ul>
+                            @foreach (var item in Model.FutureMatches)
+                            {
+                                <li>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="row">
+                                                <div class="col-lg-auto col-md-auto">
+                                                    <img src="/@Url.Content(@item.HomeTeam.Logo)" alt="" style="height: 60px; width: 60px !important;">
                                                 </div>
-                                            </div>
-                                            <div class="col-lg col-md my-auto">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12">
-                                                        <h3 class="font-size16 sm-font-size15 xs-font-size14 mb-2">Team 1</h3>
-                                                    </div>
-                                                    <div class="col-lg-12 col-md-12">
-                                                        <span class="post-date">March 2, 2017</span>
+                                                <div class="col-lg col-md my-auto">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <span class="h5 text-capitalize text-dark mb-0">@item.HomeTeam.Name</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 my-auto">
-                                        <div class="row">
-                                            <div class="col-md-2 mfInput">
-                                                <input type="text" name="team1score">
-                                            </div>
-                                            <div class="col-md-2 mfInput">
-                                                <input type="text" name="team2score">
-                                            </div>
-                                            <div class="col-md-2 mfControls">
-                                                <button type="submit" class="butn mfProgress">
-                                                    <span class="cnt">Update Score</span>
-                                                    <span class="loader"></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3">
-                                        <div class="row">
-                                            <div class="col-lg col-md my-auto text-right">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12">
-                                                        <h3 class="font-size16 sm-font-size15 xs-font-size14 mb-2">Team 2</h3>
-                                                    </div>
-                                                    <div class="col-lg-12 col-md-12">
-                                                        <span class="post-date">March 2, 2017</span>
-                                                    </div>
+                                        <div class="col-lg-6 col-md-6 my-auto">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-3 col-md-3 my-auto">
+                                                    <span class="text-success"><i class="fas fa-calendar-alt"></i></span>
+                                                    <span class="post-date">@Convert.ToDateTime(item.StartOn).ToString("dd/MM/yyyy HH:mm")</span>
+                                                </div>
+                                                <div class="col-md-2 my-auto">
+                                                    <input class="form-control mb-0" type="text" name="team1score">
+                                                </div>
+                                                <div class="col-md-2 my-auto">
+                                                    <input class="form-control mb-0" type="text" name="team2score">
+                                                </div>
+                                                <div class="col-md-3 my-auto">
+                                                    <button type="submit" class="btn btn-primary">Update Score</button>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-auto col-md-auto">
-                                                <div class="blog-img">
-                                                    <img src="~/crizal/img/world-cup/maldives.png" alt="" style="height: 60px; width: 60px !important;">
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="row">
+                                                <div class="col-lg col-md my-auto text-right">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <span class="h5 text-capitalize text-dark mb-0">@item.AwayTeam.Name</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-auto col-md-auto">
+                                                    <img src="/@Url.Content(@item.AwayTeam.Logo)" alt="" style="height: 60px; width: 60px !important;">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </li>
-                        }
-                    </ul>
-                </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+
+
             </div>
         </div>
     </div>
 </section>
+

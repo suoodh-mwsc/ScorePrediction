@@ -17,7 +17,7 @@ namespace ScorePrediction.Web.Models.Domain
         public string Description { get; set; }
 
 
-        public string MatchId { get; set; }
+        public Guid MatchId { get; set; }
         public Match Match { get; set; }
     }
 }

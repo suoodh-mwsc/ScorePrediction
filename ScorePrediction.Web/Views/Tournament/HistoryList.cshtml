@@ -1,0 +1,56 @@
+﻿@using ScorePrediction.Web.Models.Domain
+@model IEnumerable<Tournament>;
+
+@{
+    ViewData["Title"] = "HistoryList";
+}
+
+
+
+
+<section>
+    <div class="container-fluid">
+
+        <div class="section-heading left">
+            <h3>Tournaments</h3>
+        </div>
+
+        @if (Model == null)
+        {
+            <div class="alert alert-info alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Info!</strong> Currently you dont have any active Match in this Tournament.
+            </div>
+        }
+        else
+        {
+            <div class="row position-relative">
+                @foreach (var item in Model)
+                {
+                    <!-- start blog -->
+                    <div class="col-lg-4 sm-margin-20px-bottom blog-style1 pb-4">
+                        <a asp-controller="Match" asp-action="HistoryList" asp-route-id="@item.Id">
+                            <div class="item text-center">
+                                <div class="post-img">
+                                    <img src="/@Url.Content(@item.Image)" alt="">
+                                </div>
+                                <div class="content">
+                                    <h5 class="margin-10px-bottom font-weight-600 text-success">@item.Name</h5>
+                                    <div class="tag alt-font">
+                                        <span class="text-success"><i class="fas fa-calendar-alt mr-2"></i></span>
+                                        <span class="post-date">@Convert.ToDateTime(item.StartOn).ToString("dd/MM/yyyy")</span>
+                                        <span class="text-success"><i class="fas fa-arrow-right ml-2 mr-2"></i></span>
+                                        <span class="post-date">@Convert.ToDateTime(item.EndOn).ToString("dd/MM/yyyy")</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end blog -->
+                }
+            </div>
+        }
+
+
+    </div>
+</section>

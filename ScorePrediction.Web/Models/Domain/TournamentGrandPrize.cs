@@ -19,5 +19,8 @@ namespace ScorePrediction.Web.Models.Domain
 
         public Tournament TournamentId { get; set; }
         public Match MatchId { get; set; }
+
+
+        public TournamentGrandWinner Winner { get; set; }
     }
 }

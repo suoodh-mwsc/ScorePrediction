@@ -1,5 +1,6 @@
 ﻿using ScorePrediction.Web.Models.Domain;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ScorePrediction.Web.Models.Domain
 {
