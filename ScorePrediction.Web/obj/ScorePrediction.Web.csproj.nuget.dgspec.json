@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code MWSC\\2022-MWSC-Github (.net Core)\\ScorePrediction\\ScorePrediction.Web\\ScorePrediction.Web.csproj": {}
+    "D:\\Code MWSC\\2022-Test (.net core)\\ScorePrediction\\ScorePrediction.Web\\ScorePrediction.Web.csproj": {}
   },
   "projects": {
-    "D:\\Code MWSC\\2022-MWSC-Github (.net Core)\\ScorePrediction\\ScorePrediction.Web\\ScorePrediction.Web.csproj": {
+    "D:\\Code MWSC\\2022-Test (.net core)\\ScorePrediction\\ScorePrediction.Web\\ScorePrediction.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code MWSC\\2022-MWSC-Github (.net Core)\\ScorePrediction\\ScorePrediction.Web\\ScorePrediction.Web.csproj",
+        "projectUniqueName": "D:\\Code MWSC\\2022-Test (.net core)\\ScorePrediction\\ScorePrediction.Web\\ScorePrediction.Web.csproj",
         "projectName": "ScorePrediction.Web",
-        "projectPath": "D:\\Code MWSC\\2022-MWSC-Github (.net Core)\\ScorePrediction\\ScorePrediction.Web\\ScorePrediction.Web.csproj",
-        "packagesPath": "C:\\Users\\Suoodh\\.nuget\\packages\\",
-        "outputPath": "D:\\Code MWSC\\2022-MWSC-Github (.net Core)\\ScorePrediction\\ScorePrediction.Web\\obj\\",
+        "projectPath": "D:\\Code MWSC\\2022-Test (.net core)\\ScorePrediction\\ScorePrediction.Web\\ScorePrediction.Web.csproj",
+        "packagesPath": "C:\\Users\\DU10031222\\.nuget\\packages\\",
+        "outputPath": "D:\\Code MWSC\\2022-Test (.net core)\\ScorePrediction\\ScorePrediction.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Suoodh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DU10031222\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
