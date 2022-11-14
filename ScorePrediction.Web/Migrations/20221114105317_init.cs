@@ -51,7 +51,7 @@ namespace ScorePrediction.Web.Migrations
                         column: x => x.TournamentId,
                         principalTable: "Tournaments",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -67,6 +67,8 @@ namespace ScorePrediction.Web.Migrations
                     StartOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PredictionDeadline = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PublishedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    HomeTeamScore = table.Column<int>(type: "int", nullable: false),
+                    AwayTeamScore = table.Column<int>(type: "int", nullable: false),
                     TournamentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     HomeTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     AwayTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
@@ -92,6 +94,30 @@ namespace ScorePrediction.Web.Migrations
                         onDelete: ReferentialAction.NoAction);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Predictions",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    HomeTeamPredictedScore = table.Column<int>(type: "int", nullable: false),
+                    AwayTeamPredictedScore = table.Column<int>(type: "int", nullable: false),
+                    MatchId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Predictions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Predictions_Matches_MatchId",
+                        column: x => x.MatchId,
+                        principalTable: "Matches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Matches_AwayTeamId",
                 table: "Matches",
@@ -108,6 +134,11 @@ namespace ScorePrediction.Web.Migrations
                 column: "TournamentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Predictions_MatchId",
+                table: "Predictions",
+                column: "MatchId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Teams_TournamentId",
                 table: "Teams",
                 column: "TournamentId");
@@ -115,6 +146,9 @@ namespace ScorePrediction.Web.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Predictions");
+
             migrationBuilder.DropTable(
                 name: "Matches");
 
