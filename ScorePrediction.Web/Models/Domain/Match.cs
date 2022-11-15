@@ -28,7 +28,11 @@ namespace ScorePrediction.Web.Models.Domain
         [DisplayName("Published On")]
         public DateTime? PublishedOn { get; set; }
 
+
+
+        [DisplayName("Home Team Score")]
         public int? HomeTeamScore { get; set; } = 0;
+        [DisplayName("Away Team Score")]
         public int? AwayTeamScore { get; set; } = 0;
 
 
@@ -45,10 +49,12 @@ namespace ScorePrediction.Web.Models.Domain
 
         //Guid HomeTeamId { get; set; }
         //[ForeignKey("HomeTeamId")]
+        [DisplayName("Home Team")]
         public virtual Team HomeTeam { get; set; }
 
         //[ForeignKey("AwayTeamId")]
         //Guid AwayTeamId { get; set; }
+        [DisplayName("Away Team")]
         public virtual Team AwayTeam { get; set; }
 
 
