@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Dto\Team\**" />
+    <Content Remove="Models\Dto\Team\**" />
+    <EmbeddedResource Remove="Models\Dto\Team\**" />
+    <None Remove="Models\Dto\Team\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.11">
       <PrivateAssets>all</PrivateAssets>
@@ -20,8 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Dto\MatchDto\" />
-    <Folder Include="Models\Dto\Team\" />
     <Folder Include="wwwroot\crizal\img\world-cup\" />
   </ItemGroup>
 

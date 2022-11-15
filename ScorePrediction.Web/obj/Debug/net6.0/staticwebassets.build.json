@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nZmze6z4mRIW5T+PoIdHQPirhoovCVtLYMAuOaCXm6s=",
+  "Hash": "SypFAgafHlJ9kQqjVmo9B8cfIwDPd9k0mhPGHd/aOQg=",
   "Source": "ScorePrediction.Web",
   "BasePath": "_content/ScorePrediction.Web",
   "Mode": "Default",
@@ -3687,6 +3687,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\crizal\\img\\flag\\senegal_2.png"
+    },
+    {
+      "Identity": "D:\\Code MWSC\\2022-Test (.net core)\\ScorePrediction\\ScorePrediction.Web\\wwwroot\\crizal\\img\\flag\\serbia.png",
+      "SourceId": "ScorePrediction.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Code MWSC\\2022-Test (.net core)\\ScorePrediction\\ScorePrediction.Web\\wwwroot\\",
+      "BasePath": "_content/ScorePrediction.Web",
+      "RelativePath": "crizal/img/flag/serbia.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\crizal\\img\\flag\\serbia.png"
     },
     {
       "Identity": "D:\\Code MWSC\\2022-Test (.net core)\\ScorePrediction\\ScorePrediction.Web\\wwwroot\\crizal\\img\\flag\\serbia_2.png",

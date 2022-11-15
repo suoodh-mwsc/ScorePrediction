@@ -15,15 +15,28 @@ namespace ScorePrediction.Web.Controllers
         public IActionResult List()
         {
             DateTime todayDate = DateTime.Now;
-            IEnumerable<Team> objectList = _dbContext.Teams
+            var objectList = _dbContext.Teams
                 .Include(m => m.Tournament)
-                .Where(e => e.DeletedOn == null);
+                .Where(e => e.DeletedOn == null).ToList();
             return View(objectList);
         }
 
+
+        public IActionResult ManageTournamentTeam(Guid? id)
+        {
+            var objectList = _dbContext.Teams
+                .Include(m => m.Tournament)
+                .Where(e => e.Tournament.Id == id
+                        && e.DeletedOn == null).ToList();
+            return View(objectList);
+        }
+
+
         public IActionResult ManageList()
         {
-            IEnumerable<Team> objectList = _dbContext.Teams.Where(e => e.DeletedOn == null);
+            var objectList = _dbContext.Teams
+                .Include(m => m.Tournament)
+                .Where(e => e.DeletedOn == null).ToList();
             return View(objectList);
         }
 

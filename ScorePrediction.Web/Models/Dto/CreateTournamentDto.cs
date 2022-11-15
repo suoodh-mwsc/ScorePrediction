@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ScorePrediction.Web.Models.Dto.Tournament
+namespace ScorePrediction.Web.Models.Dto
 {
     public class CreateTournamentDto
     {
@@ -14,6 +14,6 @@ namespace ScorePrediction.Web.Models.Dto.Tournament
         public DateTime EndOn { get; set; }
 
         [Required]
-        public Boolean ScorePrediction { get; set; }
+        public bool ScorePrediction { get; set; }
     }
 }

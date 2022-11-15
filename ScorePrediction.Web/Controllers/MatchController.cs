@@ -70,9 +70,10 @@ namespace ScorePrediction.Web.Controllers
             DateTime todayDate = DateTime.Now.Date;
             var DbF = Microsoft.EntityFrameworkCore.EF.Functions;
 
-            IEnumerable<Match> objectList = _dbContext.Matches
+            var objectList = _dbContext.Matches
                 .Include(m => m.AwayTeam)
                 .Include(m => m.HomeTeam)
+                .Include(m => m.Tournament)
                 .Where(e => e.Tournament.Id == id 
                         && e.DeletedOn == null 
                         && e.PublishedOn.HasValue 
@@ -81,12 +82,26 @@ namespace ScorePrediction.Web.Controllers
             return View(objectList);
         }
 
-        public IActionResult ManageList()
+
+        public IActionResult ManageTournamentMatch(Guid? id)
         {
-            IEnumerable<Match> objectList = _dbContext.Matches
+            var objectList = _dbContext.Matches
                 .Include(m => m.AwayTeam)
                 .Include(m => m.HomeTeam)
-                .Where(e => e.DeletedOn == null);
+                .Include(m => m.Tournament)
+                .Where(e => e.Tournament.Id == id 
+                        && e.DeletedOn == null).ToList();
+            return View(objectList);
+        }
+
+
+        public IActionResult ManageList()
+        {
+            var objectList = _dbContext.Matches
+                .Include(m => m.AwayTeam)
+                .Include(m => m.HomeTeam)
+                .Include(m => m.Tournament)
+                .Where(e => e.DeletedOn == null).ToList();
             return View(objectList);
         }
 

@@ -1,5 +1,5 @@
 ﻿@using ScorePrediction.Web.Models.Domain
-@model IEnumerable<Match>;
+@model List<Match>;
 
 @{
     ViewData["Title"] = "ManageList";
@@ -25,16 +25,17 @@
 
                 <div class="blog-grids">
                     <div class="row">
-                        <div class="col-lg-9 col-md-9">
+                        <div class="col-lg-10 col-md-10">
                             <table class="table table-sm table-hover">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">Home</th>
-                                        <th scope="col">Away</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Prediction Deadline</th>
-                                        <th scope="col">Published</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col" class="text-center">Home</th>
+                                        <th scope="col" class="text-center">Away</th>
+                                        <th scope="col" style="width: 20px !important;"></th>
+                                        <th scope="col" class="text-center">Title</th>
+                                        <th scope="col" class="text-center">Deadline</th>
+                                        <th scope="col" class="text-center">Published</th>
+                                        <th scope="col" style="width: 170px !important;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,19 +43,45 @@
                                     {
                                         <tr>
                                             <td>
-                                                <span class="h6 text-dark">@item.HomeTeam.Name</span>
+                                                <div class="row">
+                                                    <div class="col-lg-auto col-md-auto ml-3">
+                                                        <img src="/@Url.Content(@item.HomeTeam.Logo)" alt="" style="height: 20px; width: 20px !important;">
+                                                    </div>
+                                                    <div class="col-lg col-md my-auto">
+                                                        <span class="h6 text-dark mb-0">@item.HomeTeam.Name</span>
+                                                    </div>
+                                                    <div class="col-lg-auto col-md-auto">
+                                                        <span class="h6 text-dark">@item.HomeTeamScore</span>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td>
-                                                <span class="h6 text-dark">@item.AwayTeam.Name</span>
+                                                <div class="row">
+                                                    <div class="col-lg-auto col-md-auto">
+                                                        <span class="h6 text-dark">@item.AwayTeamScore</span>
+                                                    </div>
+                                                    <div class="col-lg col-md my-auto">
+                                                        <span class="h6 text-dark mb-0">@item.AwayTeam.Name</span>
+                                                    </div>
+                                                    <div class="col-lg-auto col-md-auto">
+                                                        <img src="/@Url.Content(@item.AwayTeam.Logo)" alt="" style="height: 20px; width: 20px !important;">
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td>
-                                                <span class="h6 text-dark">@item.MatchTitle</span>
                                             </td>
-                                            <td>
-                                                <span class="h6 text-dark">@item.PredictionDeadline</span>
+                                            <td class="text-center">
+                                                <span class="h6 @(!@item.DeletedOn.HasValue ? "text-dark":"text-danger")">@item.MatchTitle</span>
+                                        </td>
+                                            <td class="text-center">
+                                                <span class="h6 @(!@item.DeletedOn.HasValue ? "text-dark":"text-danger")">
+                                                    @Convert.ToDateTime(item.PredictionDeadline).ToString("dd/MM/yyyy HH:mm")
+                                                </span>
                                             </td>
-                                            <td>
-                                                <span class="h6 text-dark">@item.PublishedOn</span>
+                                            <td class="text-center">
+                                                <span class="h6 @(!@item.DeletedOn.HasValue ? "text-dark":"text-danger")">
+                                                    @Convert.ToDateTime(item.PublishedOn).ToString("dd/MM/yyyy HH:mm")
+                                                </span>
                                             </td>
                                             <td>
                                                 <a asp-action="Edit" asp-route-id="@item.Id">
@@ -68,12 +95,12 @@
                                                     </span>
                                                 </a>
                                                 <a asp-action="Delete" asp-route-id="@item.Id">
-                                                    <span class="text-danger">
+                                                    <span class="text-danger mr-2">
                                                         <i class="fas fa-trash-alt margin-5px-right"></i>
                                                     </span>
                                                 </a>
                                                 <a asp-action="Delete" asp-route-id="@item.Id">
-                                                    <span class="text-success">
+                                                    <span class="text-success mr-2">
                                                         <i class="fas fa-upload margin-5px-right"></i>
                                                     </span>
                                                 </a>
@@ -83,7 +110,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-2 col-md-2">
                         </div>
                     </div>
                 </div>

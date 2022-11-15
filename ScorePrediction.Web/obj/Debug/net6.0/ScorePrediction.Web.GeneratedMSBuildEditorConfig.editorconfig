@@ -63,6 +63,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Code MWSC/2022-Test (.net core)/ScorePrediction/ScorePrediction.Web/Views/Tournament/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Code MWSC/2022-Test (.net core)/ScorePrediction/ScorePrediction.Web/Views/Tournament/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Code MWSC/2022-Test (.net core)/ScorePrediction/ScorePrediction.Web/Views/Tournament/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Code MWSC/2022-Test (.net core)/ScorePrediction/ScorePrediction.Web/Views/Tournament/HistoryList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudFxIaXN0b3J5TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -73,6 +85,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Code MWSC/2022-Test (.net core)/ScorePrediction/ScorePrediction.Web/Views/Tournament/ManageList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudFxNYW5hZ2VMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Code MWSC/2022-Test (.net core)/ScorePrediction/ScorePrediction.Web/Views/Tournament/Publish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG91cm5hbWVudFxQdWJsaXNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Code MWSC/2022-Test (.net core)/ScorePrediction/ScorePrediction.Web/Views/_ViewImports.cshtml]

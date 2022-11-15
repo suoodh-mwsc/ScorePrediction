@@ -62,7 +62,7 @@ namespace ScorePrediction.Web.Models
             {
                 _dbContext.Tournaments.Add(s);
             }
-            _dbContext.SaveChanges();
+            //_dbContext.SaveChanges();
 
 
 
@@ -132,7 +132,7 @@ namespace ScorePrediction.Web.Models
             {
                 _dbContext.Teams.Add(s);
             }
-            _dbContext.SaveChanges();
+            //_dbContext.SaveChanges();
 
 
 
@@ -147,7 +147,7 @@ namespace ScorePrediction.Web.Models
             {
                 _dbContext.Matches.Add(s);
             }
-            _dbContext.SaveChanges();
+            //_dbContext.SaveChanges();
 
 
             _logger.LogInformation("Finished seeding the database.");

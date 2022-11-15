@@ -1,6 +1,6 @@
 ﻿@using System.Text.RegularExpressions;
 @using ScorePrediction.Web.Models.Domain
-@model IEnumerable<Tournament>;
+@model List<Tournament>;
 
 @{
     ViewData["Title"] = "ManageList";
@@ -27,16 +27,17 @@
 
                 <div class="blog-grids">
                     <div class="row">
-                        <div class="col-lg-9 col-md-9">
+                        <div class="col-lg-10 col-md-10">
                             <table class="table table-sm table-hover">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Start On</th>
-                                        <th scope="col">End On</th>
-                                        <th scope="col">Score Prediction</th>
-                                        <th scope="col">Published</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col" class="text-center">Start On</th>
+                                        <th scope="col" class="text-center">End On</th>
+                                        <th scope="col" class="text-center">Score Prediction</th>
+                                        <th scope="col" class="text-center">Published</th>
+                                        <th scope="col" class="text-center">Manage</th>
+                                        <th scope="col" style="width: 170px !important;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,19 +46,51 @@
                                         <tr>
                                             <td>
                                                 @*@Html.DisplayFor(modelItem => tournament.Name)*@
-                                                <span class="h6 text-dark">@item.Name</span>
+                                                <span class="h6 @(!@item.DeletedOn.HasValue ? "text-dark":"text-danger")">
+                                                    @item.Name
+                                                </span>
                                             </td>
-                                            <td>
-                                                <span class="h6 text-dark">@Convert.ToDateTime(item.StartOn).ToString("dd/MM/yyyy HH:mm")</span>
+                                            <td class="text-center">
+                                                <span class="h6 @(!@item.DeletedOn.HasValue ? "text-dark":"text-danger")">
+                                                    @Convert.ToDateTime(item.StartOn).ToString("dd/MM/yyyy HH:mm")
+                                                </span>
                                             </td>
-                                            <td>
-                                                <span class="h6 text-dark">@Convert.ToDateTime(item.EndOn).ToString("dd/MM/yyyy HH:mm")</span>
+                                            <td class="text-center">
+                                                <span class="h6 @(!@item.DeletedOn.HasValue ? "text-dark":"text-danger")">
+                                                    @Convert.ToDateTime(item.EndOn).ToString("dd/MM/yyyy HH:mm")
+                                                </span>
                                             </td>
-                                            <td>
-                                                <span class="h6 text-dark">@item.ScorePrediction</span>
+                                            <td class="text-center">
+                                                @if (item.ScorePrediction == true)
+                                                {
+                                                    <span class="text-success mr-2">
+                                                        <i class="fas fa-check-circle margin-5px-right"></i>
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-warning mr-2">
+                                                        <i class="fas fa-times-circle margin-5px-right"></i>
+                                                    </span>
+                                                }
                                             </td>
-                                            <td>
-                                                <span class="h6 text-dark">@Convert.ToDateTime(item.PublishedOn).ToString("dd/MM/yyyy HH:mm")</span>
+                                            <td class="text-center">
+                                                <span class="h6 @(!@item.DeletedOn.HasValue ? "text-dark":"text-danger")">
+                                                    @Convert.ToDateTime(item.PublishedOn).ToString("dd/MM/yyyy HH:mm")
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <a asp-controller="Team" asp-action="ManageList" asp-route-id="@item.Id">
+                                                    <span class="text-warning mr-2">
+                                                        <i class="fas fa-tasks margin-5px-right"></i> Teams
+                                                    </span>
+                                                </a>
+
+                                                <a asp-controller="Match" asp-action="ManageList" asp-route-id="@item.Id">
+                                                    <span class="text-warning mr-2">
+                                                        <i class="fas fa-tasks  margin-5px-right"></i> Matches
+                                                    </span>
+                                                </a>
                                             </td>
                                             <td>
                                                 <a asp-action="Edit" asp-route-id="@item.Id">
@@ -70,23 +103,34 @@
                                                         <i class="fas fa-eye margin-5px-right"></i>
                                                     </span>
                                                 </a>
-                                                <a asp-action="Delete" asp-route-id="@item.Id">
-                                                    <span class="text-danger">
-                                                        <i class="fas fa-trash-alt margin-5px-right"></i>
-                                                    </span>
-                                                </a>
-                                                <a asp-action="Delete" asp-route-id="@item.Id">
-                                                    <span class="text-success">
-                                                        <i class="fas fa-upload margin-5px-right"></i>
-                                                    </span>
-                                                </a>
+
+
+                                                @if (!@item.DeletedOn.HasValue)
+                                                {
+                                                    <a asp-action="Delete" asp-route-id="@item.Id">
+                                                        <span class="text-danger">
+                                                            <i class="fas fa-trash-alt margin-5px-right"></i>
+                                                        </span>
+                                                    </a>
+                                                }
+
+
+                                                @if (!@item.PublishedOn.HasValue)
+                                                {
+                                                    <a asp-action="Publish" asp-route-id="@item.Id">
+                                                        <span class="text-success">
+                                                            <i class="fas fa-upload margin-5px-right"></i>
+                                                        </span>
+                                                    </a>
+                                                }
+
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-lg-3 col-md-3">
+                        <div class="col-lg-2 col-md-2">
                         </div>
                     </div>
                 </div>

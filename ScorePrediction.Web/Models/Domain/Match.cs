@@ -33,8 +33,13 @@ namespace ScorePrediction.Web.Models.Domain
 
 
 
+        public string HomeTeamName { get; set; }
+        public string AwayTeamName { get; set; }
+
+
+
         [ForeignKey("Tournament")]
-        Guid TournamentId { get; set; }
+        public Guid TournamentId { get; set; }
         public Tournament Tournament { get; set; }
 
 
